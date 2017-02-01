@@ -1,0 +1,19 @@
+{
+  "name": "other-company-client",
+  "version": "1.0.0",
+  "description": "Other Company Client that calls the My Compmay API",
+  "main": "client.js",
+  "scripts": {
+    "login": "node client.js"
+  },
+  "author": "Auth0",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/auth0-samples/auth0-custom-database-client-certs/issues"
+  },
+  "homepage": "https://github.com/auth0-samples/auth0-custom-database-client-certs#readme",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "request": "^2.79.0"
+  }
+}
