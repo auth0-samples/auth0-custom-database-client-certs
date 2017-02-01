@@ -1,0 +1,21 @@
+{
+  "name": "my-company-api",
+  "version": "1.0.0",
+  "description": "API My Company",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Auth0",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/auth0-samples/auth0-custom-database-client-certs/issues"
+  },
+  "homepage": "https://github.com/auth0-samples/auth0-custom-database-client-certs#readme",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "client-certificate-auth": "^0.3.0",
+    "dotenv": "^4.0.0",
+    "express": "^4.14.1"
+  }
+}
