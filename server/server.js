@@ -6,9 +6,9 @@ var configuration = require('./lib/configuration');
 var bodyParser = require('body-parser');
 
 // The keys are stored in the configuration as Base64 to avoid issues with format and encoding
-var base64Key = new Buffer(configuration.base64ServerKey, 'base64');
-var base64Cert = new Buffer(configuration.base64ServerCert, 'base64');
-var base64CA = new Buffer(configuration.base64CA, 'base64');
+var base64Key = new Buffer(configuration.BASE64_SERVER_KEY, 'base64');
+var base64Cert = new Buffer(configuration.BASE64_SERVER_CERT, 'base64');
+var base64CA = new Buffer(configuration.BASE64_CA, 'base64');
 
 var opts = {
     // Server SSL private key and certificate
@@ -49,7 +49,7 @@ var checkAuth = function(cert, callback) {
   * as a username to log the user in to your underlying authentication/session
   * management layer.
   */
-  callback(cert.subject.CN === configuration.allowedClientSN);
+  callback(cert.subject.CN === configuration.ALLOWED_CLIENT_SUBJECT_NAME);
 };
 
 app.get('/', function(req, res) {

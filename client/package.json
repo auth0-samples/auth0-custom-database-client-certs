@@ -14,6 +14,6 @@
   "homepage": "https://github.com/auth0-samples/auth0-custom-database-client-certs#readme",
   "dependencies": {
     "dotenv": "^4.0.0",
-    "request": "^2.79.0"
+    "request": "2.67.0"
   }
 }

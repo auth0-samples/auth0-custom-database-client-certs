@@ -1,6 +1,6 @@
 # Auth0 custom database client certificates sample
 
-This sample shows how you can use client certificates authentication and can easily be adapted to run as a custom database script inside the Auth0 platform.
+This sample shows how you can use client certificates authentication between your server/api and a Auth0 Custom Database Script. In the section *Run in Auth0 as Custom Database Login script* a step by step guide explains how you can integrate the script into the Auth0 platform.
 
 ## Generate the certificates
 
@@ -83,11 +83,19 @@ Generate the certificate
 
 ## How to run the sample
 
+### Run in Auth0 as Custom Database Login script
+
+1. Go to [Auth0](https://auth0.com) and click Sign Up.
+2. Go to `Connections` > `Database` and click *Create db connection*, choose a name and *save*.
+3. Open the tab *Custom Database*, and enable `Use my own database`, by default the *Login* database action script is opened.
+4. Copy the content of the **function** from [login.js](https://github.com/auth0-samples/auth0-custom-database-client-certs/blob/master/client/login.js#L5-L30) into the *Login* **function body** via the action script editor.
+5. In the *Settings* section below the code editor add the settings `API_ENDPOINT`, `BASE64_CLIENT_KEY`, `BASE64_CLIENT_CERT`, and `BASE64_CA`. The values are accessible through the global `configuration` object.
+
 ### Server
 
 #### Configuration
 
-Rename the `.env.sample` to `.env` and fill in the configuration values, note that the `BASE64_SERVER_KEY`, `BASE64_SERVER_CERT`, and `BASE64_CA` values are Base64 encoded to avoid issues with format and encoding
+Rename the `.env.sample` to `.env` and fill in the configuration values, note that the `BASE64_SERVER_KEY`, `BASE64_SERVER_CERT`, and `BASE64_CA` values are Base64 encoded to avoid issues with format and encoding. The value of `ALLOWED_CLIENT_SUBJECT_NAME` should match the `Common Name` of the Client Certificate.
 
 ```
 BASE64_SERVER_KEY=LS0tLS1CRUdJTiBSU0EgUFJJVk...VORCBSU0EgUFJJVkFURSBLRVktLS0tLQo=
@@ -99,7 +107,9 @@ example,  `cat myCompanyRootCA.pem | base64`
 
 Add following entry to your hosts file `/etc/hosts` (OSX) if you are testing on your local machine.
 
-`127.0.0.1      api.mycompany.com` # This should match the Common Name of the 'server certificate'
+```
+127.0.0.1      api.mycompany.com # This should match the Common Name of the 'server certificate'
+```
 
 #### Run
 
@@ -109,11 +119,12 @@ npm install
 npm start
 ```
 
-### Client
+
+### Run the client local
 
 #### Configuration
 
-Rename the `.env.sample` to `.env` and fill in the configuration values, note that the `BASE64_CLIENT_KEY`, `BASE64_CLIENT_CERT`, and `BASE64_CA` values are Base64 encoded to avoid issues with format and encoding
+Rename the `.env.sample` to `.env` and fill in the configuration values, note that the `BASE64_CLIENT_KEY`, `BASE64_CLIENT_CERT`, and `BASE64_CA` values are Base64 encoded to avoid issues with format and encoding. The value `API_ENDPOINT` should be the URL of the server.
 
 ```
 BASE64_CLIENT_KEY=LS0tLS1CRUdJTiBSU0EgUFJJVkS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg
